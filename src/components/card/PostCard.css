@@ -1,0 +1,16 @@
+.itme-post-cart{
+  border: 1px solid #909090;
+  border-radius: 12px;   
+  overflow: hidden;
+}
+.itme-post-cart .img{
+  background-color: #109BE9;
+  min-height: 150px;
+}
+.post-title{
+  height: 60px;
+  overflow: hidden;
+}
+.post-title::first-letter {
+  text-transform: uppercase;
+}
