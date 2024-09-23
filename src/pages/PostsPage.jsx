@@ -56,7 +56,7 @@ export class PostsPage extends Component {
          <Fragment>
             <section>
                <div className='container'>
-                  <h1>PostsPage ({total})</h1>
+                  <h1>Posts Page ({total})</h1>
                   <input
                      value={search}
                      onChange={handleSearch}

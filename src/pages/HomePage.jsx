@@ -18,30 +18,25 @@ export class HomePage extends Component {
    componentDidUpdate() {
       console.log('componentDidUpdate');
    }
-   shouldComponentUpdate() {
-      return false;
-      console.log('ssss');
-   }
-
-   componentWillUnmount() {
-      console.log('componentWillUnmount');
-   }
+   // shouldComponentUpdate() {
+   //   return false;
+   // }
+   // componentWillUnmount() {
+   //   console.log("componentWillUnmount");
+   // }
    render() {
       console.log('Render');
       const toggle = () => {
          this.setState({ mounting: !this.state.mounting });
       };
-
       return (
          <Fragment>
             <Container>
-               <section>
-                  <div className='container'>
-                     <h1>HomePage</h1>
-                     <button onClick={toggle}>Toggle</button>
-                     {this.state.mounting && <Counter />}
-                  </div>
-               </section>
+               <div className='container'>
+                  <h1>HomePage</h1>
+                  <button onClick={toggle}>Toggle</button>
+                  {this.state.mounting && <Counter />}
+               </div>
             </Container>
          </Fragment>
       );

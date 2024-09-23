@@ -8,8 +8,8 @@ const PostsPage = lazy(() => import('./pages/PostsPage'));
 const PostPage = lazy(() => import('./pages/PostPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
-const TeamPage = lazy(() => import('./pages/TeamPage'));
-const PartnersPage = lazy(() => import('./pages/PartnersPage'));
+const AboutTeamPage = lazy(() => import('./pages/AboutTeamPage'));
+const AboutNewsPage = lazy(() => import('./pages/AboutNewsPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function App() {
@@ -23,8 +23,8 @@ function App() {
                   <Route index element={<HomePage />} />
                   <Route path='about'>
                      <Route index element={<AboutPage />} />
-                     <Route path='team' element={<TeamPage />} />
-                     <Route path='partners' element={<PartnersPage />} />
+                     <Route path='news' element={<AboutNewsPage />} />
+                     <Route path='team' element={<AboutTeamPage />} />
                   </Route>
                   <Route path='posts' element={<PostsPage />} />
                   <Route path='posts/:postId' element={<PostPage />} />

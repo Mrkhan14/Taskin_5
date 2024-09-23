@@ -1,19 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-export class AboutPage extends Component {
+export class AboutTeamPage extends Component {
    render() {
       return (
          <Fragment>
             <section>
                <div className='container'>
-                  <h1>AboutPage</h1>
-                  <Link to='/about/news' className='me-3'>
-                     News
+                  <Link to='/about' className='d-block w-25 mt-3 border p-3'>
+                     Go back
                   </Link>
-                  <Link to='/about/team' className='me-3'>
-                     Team
-                  </Link>
+
+                  <h1 className='text-center'>About Team Page</h1>
                </div>
             </section>
          </Fragment>
@@ -21,4 +19,4 @@ export class AboutPage extends Component {
    }
 }
 
-export default AboutPage;
+export default AboutTeamPage;
