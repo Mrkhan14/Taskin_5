@@ -1,6 +1,7 @@
+// Core
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-
+// Function
 export class AboutNewsPage extends Component {
    render() {
       return (

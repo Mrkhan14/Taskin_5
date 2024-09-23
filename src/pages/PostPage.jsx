@@ -1,8 +1,10 @@
+// Core
 import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 import { toast } from 'react-toastify';
+// Components
 import Loading from '../components/Loading';
-
+// Function
 export class PostPage extends Component {
    state = {
       post: null,
@@ -47,5 +49,4 @@ export class PostPage extends Component {
       );
    }
 }
-
 export default PostPage;

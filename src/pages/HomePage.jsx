@@ -1,6 +1,9 @@
+// Core
 import React, { Component, Fragment } from 'react';
+// Components
 import Container from 'react-bootstrap/Container';
 import Counter from '../components/Counter';
+// Function
 export class HomePage extends Component {
    constructor(props) {
       super(props);
@@ -9,23 +12,22 @@ export class HomePage extends Component {
          mounting: true,
       };
    }
-   // componentWillMount() {
-   //   console.log("componentWillMount");
-   // }
+   componentWillMount() {
+      console.log('componentWillMount');
+   }
    componentDidMount() {
       console.log('componentDidMount');
    }
    componentDidUpdate() {
       console.log('componentDidUpdate');
    }
-   // shouldComponentUpdate() {
-   //   return false;
-   // }
-   // componentWillUnmount() {
-   //   console.log("componentWillUnmount");
-   // }
+   shouldComponentUpdate() {
+      return false;
+   }
+   componentWillUnmount() {
+      console.log('componentWillUnmount');
+   }
    render() {
-      console.log('Render');
       const toggle = () => {
          this.setState({ mounting: !this.state.mounting });
       };

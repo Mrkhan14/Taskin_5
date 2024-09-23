@@ -1,10 +1,13 @@
+// Core
 import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 import { toast } from 'react-toastify';
+// Constants;
+import { LIMIT } from '../constants';
+// Components
 import PostCard from '../components/card/PostCard';
 import Loading from '../components/Loading';
-import { LIMIT } from '../constants';
-
+// Function
 export class PostsPage extends Component {
    state = {
       posts: [],

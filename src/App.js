@@ -1,6 +1,7 @@
+// Core
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+// Components
 import Layout from './components/layout';
 import Loading from './components/Loading';
 
@@ -11,7 +12,7 @@ const AboutPage = lazy(() => import('./pages/AboutPage'));
 const AboutTeamPage = lazy(() => import('./pages/AboutTeamPage'));
 const AboutNewsPage = lazy(() => import('./pages/AboutNewsPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
-
+// Function
 function App() {
    return (
       <Suspense
