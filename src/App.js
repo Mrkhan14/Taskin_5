@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Layout from './components/layout';
 import Loading from './components/Loading';
+
 const PostsPage = lazy(() => import('./pages/PostsPage'));
 const PostPage = lazy(() => import('./pages/PostPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
