@@ -2,12 +2,12 @@
 import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 import { toast } from 'react-toastify';
-// Constants;
+// Constants
 import { LIMIT } from '../constants';
 // Components
 import PostCard from '../components/card/PostCard';
 import Loading from '../components/Loading';
-// Function
+
 export class PostsPage extends Component {
    state = {
       posts: [],
@@ -15,46 +15,68 @@ export class PostsPage extends Component {
       total: 0,
       search: '',
       activePage: 1,
+      limit: LIMIT,
+      allPosts: [],
+      filteredPosts: [],
    };
-   async getPosts(search = '', page = 1) {
+
+   async getAllPosts() {
       try {
          this.setState({ loading: true });
-         let { data } = await axios.get(
-            'https://jsonplaceholder.typicode.com/posts',
-            { params: { q: search, _page: page, _limit: LIMIT } }
-         );
-         let { data: allData } = await axios.get(
-            'https://jsonplaceholder.typicode.com/posts',
-            { params: { q: search } }
-         );
-         this.setState({ posts: data, total: allData.length });
+         let { data } = await axios.get('https://fakestoreapi.com/products');
+         this.setState({ 
+            allPosts: data, 
+            filteredPosts: data, 
+            total: data.length 
+         });
       } catch (err) {
          toast.error('Error');
       } finally {
          this.setState({ loading: false });
       }
    }
-   componentDidMount() {
-      this.getPosts();
+
+   getPaginatedPosts() {
+      const { activePage, limit, filteredPosts } = this.state;
+      const startIndex = (activePage - 1) * limit;
+      const paginatedPosts = filteredPosts.slice(startIndex, startIndex + limit);
+      return paginatedPosts;
    }
+
+   componentDidMount() {
+      this.getAllPosts();
+   }
+
+   handleSearch = e => {
+      const searchValue = e.target.value.toLowerCase();
+      const filteredPosts = this.state.allPosts.filter(post =>
+         post.title.toLowerCase().includes(searchValue)
+      );
+      this.setState({
+         search: searchValue,
+         activePage: 1,
+         total: filteredPosts.length,
+         filteredPosts: filteredPosts,
+      });
+   };
+
+   getPage = page => {
+      const { activePage } = this.state;
+      const newActivePage =
+         page === '+'
+            ? activePage + 1
+            : page === '-'
+            ? activePage - 1
+            : page;
+      this.setState({ activePage: newActivePage });
+   };
+
    render() {
-      const { posts, loading, total, search, activePage } = this.state;
-      const handleSearch = e => {
-         this.getPosts(e.target.value);
-         this.setState({ search: e.target.value, activePage: 1 });
-      };
-      const getPage = page => {
-         const { activePage } = this.state;
-         const newActivePage =
-            page === '+'
-               ? activePage + 1
-               : page === '-'
-               ? activePage - 1
-               : page;
-         this.setState({ activePage: newActivePage });
-         this.getPosts(search, newActivePage);
-      };
-      const pagesQuantity = Math.ceil(total / LIMIT);
+      const { loading, total, search, activePage, limit } = this.state;
+      const paginatedPosts = this.getPaginatedPosts();
+
+      const pagesQuantity = Math.ceil(total / limit);
+
       return (
          <Fragment>
             <section>
@@ -62,7 +84,7 @@ export class PostsPage extends Component {
                   <h1>Posts Page ({total})</h1>
                   <input
                      value={search}
-                     onChange={handleSearch}
+                     onChange={this.handleSearch}
                      type='text'
                      className='form-control'
                      placeholder='Searching...'
@@ -74,7 +96,7 @@ export class PostsPage extends Component {
                      />
                   ) : (
                      <div className='post-cart w-100'>
-                        {posts.map(post => (
+                        {paginatedPosts.map(post => (
                            <PostCard key={post.id} {...post} />
                         ))}
                      </div>
@@ -82,7 +104,7 @@ export class PostsPage extends Component {
 
                   <button
                      className={`${activePage === 1 ? 'disabled' : ''}`}
-                     onClick={() => getPage('-')}
+                     onClick={() => this.getPage('-')}
                   >
                      Previous
                   </button>
@@ -90,23 +112,18 @@ export class PostsPage extends Component {
                      .fill(1)
                      .map((_, i) => (
                         <button
-                           className={
-                              i + 1 === activePage
-                                 ? 'bg-primary text-light'
-                                 : ''
-                           }
-                           onClick={() => getPage(i + 1)}
+                           key={i}
+                           className={i + 1 === activePage ? 'bg-primary text-light' : ''}
+                           onClick={() => this.getPage(i + 1)}
                         >
                            {i + 1}
                         </button>
                      ))}
                   <button
-                     className={`${
-                        activePage === pagesQuantity ? 'disabled' : ''
-                     }`}
-                     onClick={() => getPage('+')}
+                     className={`${activePage === pagesQuantity ? 'disabled' : ''}`}
+                     onClick={() => this.getPage('+')}
                   >
-                     Nex
+                     Next
                   </button>
                </div>
             </section>

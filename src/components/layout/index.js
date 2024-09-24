@@ -11,7 +11,7 @@ export class Layout extends Component {
         <main>
           <Outlet />
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </Fragment>
     );
   }

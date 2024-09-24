@@ -48,3 +48,32 @@ button {
    align-items: center;
    overflow: hidden;
 }
+.post-img img{
+   width: 100%;
+   object-fit: contain;
+   height: 40vh;
+}
+
+.product-Title{
+   font-size: 18px;
+   font-weight: 600;
+}
+.product-category{
+   background: #109be9;
+   margin: auto;
+   color: #fff;
+   padding: 8px 12px;
+   display: inline-block;
+ }
+ .product-category::first-letter {
+   text-transform: uppercase;
+ }
+ .product-price{
+   font-size: 18px;
+   font-weight: 600;
+ }
+
+ .product-price span{
+   margin-left: 10px;
+   color: #109be9;
+ }

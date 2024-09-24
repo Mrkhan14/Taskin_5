@@ -4,13 +4,33 @@
   overflow: hidden;
 }
 .itme-post-cart .img{
-  background-color: #109BE9;
+  background-color: #fff;
   min-height: 150px;
+  position: relative;
 }
 .post-title{
-  height: 60px;
+  height: 40px;
+  font-size: 13px;
   overflow: hidden;
 }
 .post-title::first-letter {
+  text-transform: uppercase;
+}
+.itme-post-cart img{
+  width: 100%;
+  object-fit: contain;
+  height: 20vh;
+}
+.category{
+  background: #109be9;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  color: #fff;
+  padding: 8px 12px;
+}
+.category::first-letter {
   text-transform: uppercase;
 }
