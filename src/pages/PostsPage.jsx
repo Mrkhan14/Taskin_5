@@ -23,7 +23,7 @@ export class PostsPage extends Component {
    async getAllPosts() {
       try {
          this.setState({ loading: true });
-         let { data } = await axios.get('https://fakestoreapi.com/products');
+         let { data } = await axios.get('https://fakestoreapi.com/products/');
          this.setState({
             allPosts: data,
             filteredPosts: data,
