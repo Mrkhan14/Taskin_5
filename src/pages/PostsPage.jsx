@@ -56,6 +56,7 @@ export class PostsPage extends Component {
          post.title.toLowerCase().includes(searchValue)
       );
       this.setState({
+         ...this.state,
          search: searchValue,
          activePage: 1,
          total: filteredPosts.length,
