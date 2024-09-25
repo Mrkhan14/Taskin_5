@@ -1,8 +1,8 @@
 // Core
 import axios from 'axios';
 import React, { Component, Fragment } from 'react';
-import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // Components
 import Loading from '../components/Loading';
@@ -39,24 +39,31 @@ export class PostPage extends Component {
                      <Loading heightStyle='90vh' classStyle='bg-primary' />
                   ) : (
                      <Fragment>
-                         <Link to='/posts' className='d-block w-25 mt-3 border p-3'>
+                        <Link
+                           to='/posts'
+                           className='d-block w-25 mt-3 border p-3'
+                        >
                            Go back
                         </Link>
-                        <div className="post-img">
-                          <img src={post?.image} alt="" />
+                        <div className='post-img'>
+                           <img src={post?.image} alt='' />
                         </div>
                         <div className='product-Title'>{post?.title}</div>
-                        <div className='product-category my-2'>{post?.category}</div>
-                        <div className='product-price'> 
+                        <div className='product-category my-2'>
+                           {post?.category}
+                        </div>
+                        <div className='product-price'>
                            Price: <span>{post?.price}$</span>
                         </div>
-                        <div className='product-price'> 
+                        <div className='product-price'>
                            Count: <span>{post?.rating?.count}</span>
                         </div>
-                        <div className='product-price'> 
+                        <div className='product-price'>
                            Rate: <span>{post?.rating?.rate}</span>
                         </div>
-                        <div className='product-description'>{post?.description}</div>
+                        <div className='product-description'>
+                           {post?.description}
+                        </div>
                      </Fragment>
                   )}
                </div>

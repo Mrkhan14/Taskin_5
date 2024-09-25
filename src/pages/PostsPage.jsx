@@ -24,10 +24,10 @@ export class PostsPage extends Component {
       try {
          this.setState({ loading: true });
          let { data } = await axios.get('https://fakestoreapi.com/products');
-         this.setState({ 
-            allPosts: data, 
-            filteredPosts: data, 
-            total: data.length 
+         this.setState({
+            allPosts: data,
+            filteredPosts: data,
+            total: data.length,
          });
       } catch (err) {
          toast.error('Error');
@@ -39,7 +39,10 @@ export class PostsPage extends Component {
    getPaginatedPosts() {
       const { activePage, limit, filteredPosts } = this.state;
       const startIndex = (activePage - 1) * limit;
-      const paginatedPosts = filteredPosts.slice(startIndex, startIndex + limit);
+      const paginatedPosts = filteredPosts.slice(
+         startIndex,
+         startIndex + limit
+      );
       return paginatedPosts;
    }
 
@@ -63,11 +66,7 @@ export class PostsPage extends Component {
    getPage = page => {
       const { activePage } = this.state;
       const newActivePage =
-         page === '+'
-            ? activePage + 1
-            : page === '-'
-            ? activePage - 1
-            : page;
+         page === '+' ? activePage + 1 : page === '-' ? activePage - 1 : page;
       this.setState({ activePage: newActivePage });
    };
 
@@ -113,14 +112,20 @@ export class PostsPage extends Component {
                      .map((_, i) => (
                         <button
                            key={i}
-                           className={i + 1 === activePage ? 'bg-primary text-light' : ''}
+                           className={
+                              i + 1 === activePage
+                                 ? 'bg-primary text-light'
+                                 : ''
+                           }
                            onClick={() => this.getPage(i + 1)}
                         >
                            {i + 1}
                         </button>
                      ))}
                   <button
-                     className={`${activePage === pagesQuantity ? 'disabled' : ''}`}
+                     className={`${
+                        activePage === pagesQuantity ? 'disabled' : ''
+                     }`}
                      onClick={() => this.getPage('+')}
                   >
                      Next
